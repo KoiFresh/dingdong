@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Back.qml</file>
+        <file>ObjectButton.qml</file>
+        <file>PageMain.qml</file>
+        <file>ObjectDoorbellSign.qml</file>
+        <file>SmallObjectBell.qml</file>
+        <file>SmallObjectClapper.qml</file>
+        <file>ObjectBell.qml</file>
+        <file>bell.png</file>
+        <file>PageLockscreen.qml</file>
+        <file>ObjectPasscode.qml</file>
+        <file>key.png</file>
+    </qresource>
+</RCC>
