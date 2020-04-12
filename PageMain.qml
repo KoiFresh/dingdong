@@ -16,7 +16,7 @@ Item {
         for(var i = 0; i < backend.name.length; i++)
         {
             console.info(startpoint);
-            //Sign.create(startpoint,backend.height[i],backend.name[i], "100");
+            Sign.create(startpoint,backend.height[i],backend.name[i], "100");
             startpoint = startpoint + (backend.height[i] * 1) + 20;
         }
     }
@@ -37,7 +37,7 @@ Item {
         anchors.fill: parent
     }
 
-   ObjectDoorbellSign {
+  /* ObjectDoorbellSign {
         id: fam1
         x: 20
         y: 20
@@ -45,7 +45,7 @@ Item {
         height: 250
         nameText: "Familie Mayer"
         sip_addresse: "100"
-    }
+    } */
 /*
     ObjectDoorbellSign {
         id: fam2
