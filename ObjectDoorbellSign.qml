@@ -71,7 +71,7 @@ Item {
         MouseArea {
             anchors.fill: parent
             enabled: true
-            onPressed:{
+            onReleased :{
                 bell.animationStart()
                 if(!backend.active)
                 {
@@ -91,8 +91,6 @@ Item {
                 }
             }
         }
-
-
 
     }
 }

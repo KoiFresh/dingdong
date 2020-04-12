@@ -9,13 +9,11 @@ Item {
 
     // rangfolge der Werte: y, name, strasse, höhe, sip
 
-
     Component.onCompleted :
     {
         var startpoint = 20;
         for(var i = 0; i < backend.name.length; i++)
         {
-            console.info(startpoint);
             Sign.create(startpoint,backend.name[i],backend.strasse[i],backend.height[i], "100");
             startpoint = startpoint + (backend.height[i] * 1) + 20;
         }
@@ -60,8 +58,4 @@ Item {
 
 }
 
-/*##^##
-Designer {
-    D{i:1;anchors_height:200;anchors_width:200;anchors_x:17;anchors_y:307}D{i:5;anchors_x:1283}
-}
-##^##*/
+

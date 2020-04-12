@@ -6,13 +6,13 @@
 #include <QThread>
 #include <iostream>
 
-phone* linPhone = new phone();
+phone linPhone; //= new phone();
 config config;
 
 backend::backend(QObject *parent) : QObject(parent)
 {  
     std::cout << "Backend Initialzed" << std::endl;
-    connect(linPhone,&phone::finished,this,&backend::linPhone_finished);
+    connect(&linPhone,&phone::finished,this,&backend::linPhone_finished);
 
     config.initializeUser();
     config.initializeSign();
@@ -60,26 +60,33 @@ void backend::call_start(QString sip_addresse)
         if(m_socket.waitForConnected(3000))
         {
             qDebug() << "Server available";
-            linPhone->identity = "sip:dingdong@dingdong:5061";
-            linPhone->password = "12345678";
+            linPhone.identity = "sip:dingdong@dingdong:5061";
+            linPhone.password = "12345678";
         }else
         {
             qDebug() << "Server not available";
-            linPhone->identity = "sip:dingdong@dingdong:5061";
-            linPhone->password = "12345678";
+            linPhone.identity = "sip:dingdong@dingdong:5061";
+            linPhone.password = "12345678";
         }
 
         m_socket.close();
 
         setActive(true);
-        linPhone->sip_adress = sip_addresse;
-        linPhone->start();
+        linPhone.sip_adress = sip_addresse;
+        linPhone.start();
+
     }
 }
 
 void backend::call_end()
 {
-    linPhone->running = false;
+    linPhone.running = false;
+    qDebug() << "end the call";
+}
+
+void backend::stop_call()
+{
+    linPhone.running = false;
 }
 
 void backend::linPhone_finished()
@@ -92,6 +99,18 @@ void backend::bell_sound()
 {
     QSound::play("ding-dong.wav");
     std::cout << "Sound" << std::endl;
+}
+
+bool backend::unlock(QString passcode)
+{
+    if(passcode == config.passcode)
+    {
+        qDebug("unlocked");
+        return true;
+    }else
+    {
+        return false;
+    }
 }
 
 void backend::close_application()

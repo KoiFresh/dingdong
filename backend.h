@@ -21,6 +21,7 @@ public:
     Q_INVOKABLE void call_start(QString sip_addresse);
     Q_INVOKABLE void bell_sound();
     Q_INVOKABLE void close_application();
+    Q_INVOKABLE bool unlock(QString passcode);
 
     bool active();
     void setActive(bool state);
@@ -34,8 +35,10 @@ public:
 signals:
     void activeChanged();
 
+
 public slots:
    void linPhone_finished();
+    void stop_call();
 
 private:
    bool m_active = false;

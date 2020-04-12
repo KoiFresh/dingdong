@@ -3,9 +3,13 @@ import QtQuick.Controls 2.0
 
 Item {
     width: 100
-    height: 200
+    height: 400
+
+    property alias index: passcode.currentIndex
+
     SwipeView {
         id: passcode
+        width: 100
         focusPolicy: Qt.TabFocus
         hoverEnabled: false
         currentIndex: 0
@@ -24,11 +28,13 @@ Item {
                 id: number0
                 color: "#dfdcdc"
                 text: qsTr("0")
+                anchors.topMargin: 0
+                anchors.rightMargin: 0
                 font.family: "Courier"
                 anchors.fill: parent
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
                 font.pixelSize: 300
             }
         }
@@ -45,7 +51,7 @@ Item {
                 font.pixelSize: 300
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
 
             }
         }
@@ -62,7 +68,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 300
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
             }
         }
 
@@ -78,7 +84,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 300
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
             }
         }
 
@@ -94,7 +100,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 300
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
             }
         }
 
@@ -110,7 +116,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 300
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
             }
         }
 
@@ -126,7 +132,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 300
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
             }
         }
 
@@ -142,7 +148,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 300
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
             }
         }
 
@@ -158,7 +164,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 300
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
             }
         }
 
@@ -174,7 +180,7 @@ Item {
                 font.pixelSize: 300
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                fontSizeMode: Text.VerticalFit
+                fontSizeMode: Text.HorizontalFit
             }
         }
 

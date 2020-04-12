@@ -18,6 +18,8 @@ public:
     const char* password= "12345678";
     const char* server_addr = "user";
 
+public slots:
+    void stop_call();
 
 private:
     LinphoneCoreVTable vtable={};
@@ -31,6 +33,7 @@ private:
     const char* sip_addresse;
     static void call_state_changed(LinphoneCore *lc, LinphoneCall *call, LinphoneCallState cstate, const char *msg);
     static void registration_state_changed(struct _LinphoneCore *lc, LinphoneProxyConfig *cfg, LinphoneRegistrationState cstate, const char *message);
+
 
 };
 

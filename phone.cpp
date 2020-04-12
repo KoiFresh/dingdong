@@ -62,6 +62,10 @@ void phone::run()
         linphone_core_destroy(lc);
 }
 
+void phone::stop_call()
+{
+    qDebug() << "stop from lin";
+}
 
 void phone::call_state_changed(LinphoneCore *lc, LinphoneCall *call, LinphoneCallState cstate, const char *msg){
     switch(cstate){

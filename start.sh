@@ -1,3 +1,5 @@
+#!/bin/bash
+
 qmake mate.pro
 make
-./mate
+

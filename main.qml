@@ -20,7 +20,6 @@ Window {
     SwipeView {
         id: mainSwipe
         anchors.fill: parent
-
         Item {
             PageMain {
                 id: pageMain
