@@ -50,6 +50,8 @@ QList<QString> backend::sip()
     return config.sip;
 }
 
+QByteArray identity;
+QByteArray password;
 
 void backend::call_start(QString sip_addresse)
 {
@@ -60,8 +62,12 @@ void backend::call_start(QString sip_addresse)
         if(m_socket.waitForConnected(3000))
         {
             qDebug() << "Server available";
-            linPhone.identity = "sip:dingdong@dingdong:5061";
-            linPhone.password = "12345678";
+            identity = config.identity.toLocal8Bit();
+            linPhone.identity = identity.data();
+
+            password = config.password.toLocal8Bit();
+            linPhone.password = password.data();
+
         }else
         {
             qDebug() << "Server not available";

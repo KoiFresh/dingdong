@@ -7,6 +7,67 @@ Item {
 
     property alias index: passcode.currentIndex
 
+
+     Rectangle {
+         id: rectangle1
+         x: 0
+         width: 5
+         radius: 0
+         visible: true
+         anchors.right: parent.right
+         anchors.rightMargin: 0
+         anchors.top: parent.top
+         anchors.topMargin: 0
+         gradient: Gradient {
+             GradientStop {
+                 position: 0
+                 color: "#000000"
+             }
+
+             GradientStop {
+                 position: 0.5
+                 color: "#a8a8a8"
+             }
+
+             GradientStop {
+                 position: 1
+                 color: "#000000"
+             }
+         }
+         anchors.bottomMargin: 0
+         anchors.bottom: parent.bottom
+     }
+
+     Rectangle {
+         id: rectangle
+         width: 6
+         radius: 0
+         gradient: Gradient {
+             GradientStop {
+                 position: 0
+                 color: "#000000"
+             }
+
+             GradientStop {
+                 position: 0.5
+                 color: "#a8a8a8"
+             }
+
+             GradientStop {
+                 position: 1
+                 color: "#000000"
+             }
+
+         }
+         anchors.bottom: parent.bottom
+         anchors.bottomMargin: 0
+         anchors.left: parent.left
+         anchors.leftMargin: 0
+         anchors.top: parent.top
+         anchors.topMargin: 0
+     }
+
+
     SwipeView {
         id: passcode
         width: 100
@@ -18,6 +79,7 @@ Item {
         orientation: Qt.Vertical
         spacing: 1
         wheelEnabled: true
+
 
         Item {
             id: nr0
@@ -36,6 +98,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 fontSizeMode: Text.HorizontalFit
                 font.pixelSize: 300
+
             }
         }
 
@@ -86,6 +149,7 @@ Item {
                 font.pixelSize: 300
                 fontSizeMode: Text.HorizontalFit
             }
+
         }
 
         Item {
@@ -183,6 +247,7 @@ Item {
                 fontSizeMode: Text.HorizontalFit
             }
         }
+
 
     }
 

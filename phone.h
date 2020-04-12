@@ -14,8 +14,8 @@ public:
     QString sip_adress;
     bool running;
 
-    const char* identity=  "sip:dingdong@user:5061";
-    const char* password= "12345678";
+    const char* identity; //=  "sip:dingdong@user:5061";
+    const char* password; //= "12345678";
     const char* server_addr = "user";
 
 public slots:
