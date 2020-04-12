@@ -58,10 +58,18 @@ Item {
                 if(!backend.active)
                 {
                     backend.bell_sound()
+                }else
+                {
+                   console.info("no sound")
                 }
+
                 if(sip_addresse)
                 {
                     backend.call_start(sip_addresse)
+                    console.info("address")
+                }else
+                {
+                    console.info("no addres")
                 }
             }
         }

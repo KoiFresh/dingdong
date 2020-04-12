@@ -12,5 +12,6 @@
         <file>PageLockscreen.qml</file>
         <file>ObjectPasscode.qml</file>
         <file>key.png</file>
+        <file>CreatorObjectDoorbellSign.js</file>
     </qresource>
 </RCC>

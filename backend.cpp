@@ -1,19 +1,26 @@
 #include "backend.h"
 #include "phone.h"
-#include "server.h"
+#include "config.h"
 
 #include <QSound>
-
+#include <QThread>
 #include <iostream>
 
 phone* linPhone = new phone();
-server* serverCheck = new server();
+config config;
 
 backend::backend(QObject *parent) : QObject(parent)
 {  
     std::cout << "Backend Initialzed" << std::endl;
     connect(linPhone,&phone::finished,this,&backend::linPhone_finished);
-    serverCheck->start();
+
+    config.initializeUser();
+    config.initializeSign();
+
+   // qDebug() << "name " << config.name.value(1);
+   // qDebug() << "höhe " << config.height.value(1);
+   // qDebug() << "sip " << config.sip.value(1);
+
 }
 
 bool backend::active() // der Wert active wird abgefrag -> active Anruf läuft
@@ -23,32 +30,42 @@ bool backend::active() // der Wert active wird abgefrag -> active Anruf läuft
 void backend::setActive(bool state)
 {
     m_active = state;
-    serverCheck->ping = state;
     emit activeChanged();
 }
 
+QList<QString> backend::name()
+{
+    return config.name;
+}
+QList<QString> backend::height()
+{
+    return config.height;
+}
+QList<QString> backend::sip()
+{
+    return config.sip;
+}
 
 void backend::call_start(QString sip_addresse)
 {
-    socket = new QTcpSocket();
-
-    socket->connectToHost("sip.mayer-schoch.de",80);
-
-    if(socket->waitForConnected(3000))
-    {
-        std::cout << "Server available" << std::endl;
-        linPhone->identity = "sip:dingdong@dingdong:5061";
-        linPhone->password = "12345678";
-    }else
-    {
-        std::cout << "Server not available" << std::endl;
-        linPhone->identity = "sip:dingdong@dingdong:5061";
-        linPhone->password = "12345678";
-    }
-
-
     if(!m_active)
     {
+        m_socket.connectToHost("sip.mayer-schoch.de",80);
+
+        if(m_socket.waitForConnected(3000))
+        {
+            qDebug() << "Server available";
+            linPhone->identity = "sip:dingdong@dingdong:5061";
+            linPhone->password = "12345678";
+        }else
+        {
+            qDebug() << "Server not available";
+            linPhone->identity = "sip:dingdong@dingdong:5061";
+            linPhone->password = "12345678";
+        }
+
+        m_socket.close();
+
         setActive(true);
         linPhone->sip_adress = sip_addresse;
         linPhone->start();

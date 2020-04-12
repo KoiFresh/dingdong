@@ -4,7 +4,6 @@ import QtQuick.Controls 2.0
 
 import Backend 1.0
 
-
 Window {
     id:main
     visible: true
@@ -13,6 +12,10 @@ Window {
     title: qsTr("dingdong V1 for Ubuntu")
     flags: Qt.WindowStaysOnTopHint
     // Object zur Kommunikation mit c++
+
+    Backend{
+        id: backend
+    }
 
     SwipeView {
         id: mainSwipe
@@ -36,9 +39,7 @@ Window {
     }
 
 
-    Backend{
-        id: backend
-    }
+
 
 
 

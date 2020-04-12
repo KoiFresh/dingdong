@@ -2,6 +2,7 @@
 #include <linphone/linphonecore.h>
 #include <iostream>
 #include <QtCore>
+#include <QDebug>
 
 phone::phone()
 {
@@ -39,7 +40,6 @@ void phone::run()
 
     linphone_call_ref(call);
 
-
     while(running){
             linphone_core_iterate(lc);
             ms_usleep(50000);
@@ -50,7 +50,7 @@ void phone::run()
             }
         }
 
-    if (call && linphone_call_get_state(call)!=LinphoneCallEnd){
+    if (call && (linphone_call_get_state(call)!=LinphoneCallEnd)){
             /* terminate the call */
             printf("Terminating the call...\n");
             fflush(stdout);

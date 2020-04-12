@@ -1,8 +1,25 @@
 import QtQuick 2.0
+import "CreatorObjectDoorbellSign.js" as Sign
+
 
 Item {
     width: 600
     height: 1024
+    id: pageMain
+
+    // rangfolge der Werte: y, height, name, klingeltaste
+
+
+    Component.onCompleted :
+    {
+        var startpoint = 20;
+        for(var i = 0; i < backend.name.length; i++)
+        {
+            console.info(startpoint);
+            //Sign.create(startpoint,backend.height[i],backend.name[i], "100");
+            startpoint = startpoint + (backend.height[i] * 1) + 20;
+        }
+    }
 
     Rectangle {
         id: background
@@ -20,7 +37,7 @@ Item {
         anchors.fill: parent
     }
 
-    ObjectDoorbellSign {
+   ObjectDoorbellSign {
         id: fam1
         x: 20
         y: 20
@@ -29,7 +46,7 @@ Item {
         nameText: "Familie Mayer"
         sip_addresse: "100"
     }
-
+/*
     ObjectDoorbellSign {
         id: fam2
         x: 20
@@ -38,10 +55,7 @@ Item {
         height: fam1.height
         nameText: "Familie Schoch"
         sip_addresse: "100"
-    }
-
-
-
+    } */
 
 }
 
