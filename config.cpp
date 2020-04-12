@@ -106,8 +106,9 @@ void config::initializeSign()
             option = message.split(":");
 
             name.append(option.value(0));
-            height.append(option.value(1));
-            sip.append(option.value(2));
+            strasse.append(option.value(1));
+            height.append(option.value(2));
+            sip.append(option.value(3));
             i++;
         }
         else

@@ -1,21 +1,21 @@
 var component;
 var sprite;
 
-function create(y, height, name, sip) {
+function create(y,name, strasse, height,sip) {
     component = Qt.createComponent("ObjectDoorbellSign.qml");
 
     if(Component.Ready === component.status)
     {
-        finish(y, height, name, sip);
+        finish(y, height, name,strasse, sip);
     }else
     {
         component.statusChanged.connect(finish);
     }
 }
 
-function finish(y, height, name, sip) {
+function finish(y, height, name,strasse, sip) {
     if (component.status === Component.Ready) {
-        sprite = component.createObject(pageMain, {x: 20, y: y, height: height, nameText: name, sip_addresse: sip, width: 560});
+        sprite = component.createObject(pageMain, {x: 20, y: y, height: height, nameText: name, sip_addresse: sip, width: 560, nameStrasse: strasse});
         if (sprite === null) {
             // Error Handling
             console.log("Error creating object");

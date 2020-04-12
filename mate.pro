@@ -19,7 +19,8 @@ SOURCES += \
         backend.cpp \
         config.cpp \
         main.cpp \
-        phone.cpp
+        phone.cpp \
+        server.cpp
 
 RESOURCES += qml.qrc
 
@@ -37,7 +38,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     backend.h \
     config.h \
-    phone.h
+    phone.h \
+    server.h
 
 #unix:!macx: LIBS += -L$$PWD/../../../usr/lib/x86_64-linux-gnu/ -llinphone
 

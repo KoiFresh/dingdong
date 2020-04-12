@@ -10,8 +10,10 @@ class backend : public QObject
     Q_PROPERTY(bool active READ active WRITE setActive NOTIFY activeChanged);
 
     Q_PROPERTY(QList<QString> name READ name)
+    Q_PROPERTY(QList<QString> strasse READ strasse)
     Q_PROPERTY(QList<QString> height READ height)
     Q_PROPERTY(QList<QString> sip READ sip)
+
 
 public:
     explicit backend(QObject *parent = nullptr);
@@ -24,8 +26,10 @@ public:
     void setActive(bool state);
 
     QList<QString> name();
+    QList<QString> strasse();
     QList<QString> height();
     QList<QString> sip();
+
 
 signals:
     void activeChanged();

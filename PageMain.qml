@@ -7,7 +7,7 @@ Item {
     height: 1024
     id: pageMain
 
-    // rangfolge der Werte: y, height, name, klingeltaste
+    // rangfolge der Werte: y, name, strasse, höhe, sip
 
 
     Component.onCompleted :
@@ -16,7 +16,7 @@ Item {
         for(var i = 0; i < backend.name.length; i++)
         {
             console.info(startpoint);
-            Sign.create(startpoint,backend.height[i],backend.name[i], "100");
+            Sign.create(startpoint,backend.name[i],backend.strasse[i],backend.height[i], "100");
             startpoint = startpoint + (backend.height[i] * 1) + 20;
         }
     }
@@ -54,6 +54,7 @@ Item {
         width: 560
         height: fam1.height
         nameText: "Familie Schoch"
+        nameStrasse: "123"
         sip_addresse: "100"
     } */
 

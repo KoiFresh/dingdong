@@ -6,6 +6,7 @@ Item {
 
     property alias nameText: name.text
     property string sip_addresse: NULL
+    property alias nameStrasse: strasse.text
 
     Rectangle {
         id: background
@@ -31,13 +32,30 @@ Item {
             color: "#ffffff"
             text: qsTr("Name der Familie oder so")
             anchors.top: bell.bottom
-            anchors.topMargin: 25
+            anchors.topMargin: 10
             anchors.horizontalCenterOffset: 0
             font.family: "Arial"
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             anchors.horizontalCenter: bell.horizontalCenter
             font.pixelSize: 34
+        }
+
+        Text {
+            id: strasse
+            x: 147
+            width: 455
+            height: 35
+            color: "#ffffff"
+            text: qsTr("Name der Strasse oder so")
+            anchors.top: name.bottom
+            anchors.topMargin: parent.height * 1/20 - 20
+            anchors.horizontalCenter: parent.horizontalCenter
+            horizontalAlignment: Text.AlignHCenter
+            anchors.horizontalCenterOffset: 0
+            font.family: "Arial"
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 20
         }
 
         ObjectBell {
@@ -60,7 +78,7 @@ Item {
                     backend.bell_sound()
                 }else
                 {
-                   console.info("no sound")
+                    console.info("no sound")
                 }
 
                 if(sip_addresse)
@@ -73,6 +91,8 @@ Item {
                 }
             }
         }
+
+
 
     }
 }

@@ -19,6 +19,7 @@ public:
     QList<QString> height;
     QList<QString> name;
     QList<QString> sip;
+    QList<QString> strasse;
 
 private:
     void setOption(QStringList option);

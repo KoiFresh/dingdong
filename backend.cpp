@@ -37,6 +37,10 @@ QList<QString> backend::name()
 {
     return config.name;
 }
+QList<QString> backend::strasse()
+{
+    return config.strasse;
+}
 QList<QString> backend::height()
 {
     return config.height;
@@ -45,6 +49,7 @@ QList<QString> backend::sip()
 {
     return config.sip;
 }
+
 
 void backend::call_start(QString sip_addresse)
 {
