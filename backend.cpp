@@ -10,8 +10,7 @@
 
 phone linPhone; //= new phone();
 config config;
-
-QThread mythread;
+tcpsocket tcpSocket;
 
 backend::backend(QObject *parent) : QObject(parent)
 {  
@@ -21,11 +20,16 @@ backend::backend(QObject *parent) : QObject(parent)
     config.initializeUser();
     config.initializeSign();
 
-   // tcpsocket socket;
+    connect(&tcpSocket,SIGNAL(unlock()),this,SLOT(door_unlock()));
 
-   // qDebug() << "name " << config.name.value(1);
-   // qDebug() << "höhe " << config.height.value(1);
-   // qDebug() << "sip " << config.sip.value(1);
+    qDebug() << "Config:";
+    qDebug() << "identity: " << config.identity;
+    qDebug() << "password: " << config.password;
+    qDebug() << "passcode: " << config.passcode;
+    qDebug() << "public_account: " << config.public_account;
+    qDebug() << "public_door: " << config.public_door;
+
+    refreshDoorconnection();
 
 }
 
@@ -61,25 +65,30 @@ QByteArray password;
 
 void backend::call_start(QString sip_addresse)
 {
+
+    refreshDoorconnection();
+
     if(!m_active)
     {
 
         m_socket.connectToHost("sip.mayer-schoch.de",80);
 
-        if(m_socket.waitForConnected(3000))
+        if(m_socket.waitForConnected(3000) && (config.public_account == "yes" || config.public_door == "yes" ))
         {
-            qDebug() << "Server available";
+            qDebug() << "Call public";
             identity = config.identity.toLocal8Bit();
             linPhone.identity = identity.data();
 
             password = config.password.toLocal8Bit();
             linPhone.password = password.data();
 
+
         }else
         {
-            qDebug() << "Server not available";
-            linPhone.identity = "sip:dingdong@dingdong:5061";
+            qDebug() << "Call private";
+            linPhone.identity = private_account;
             linPhone.password = "12345678";
+            qDebug() << sip_addresse;
         }
 
         m_socket.close();
@@ -88,6 +97,26 @@ void backend::call_start(QString sip_addresse)
         linPhone.sip_adress = sip_addresse;
         linPhone.start();
 
+    }
+}
+
+void backend::refreshDoorconnection()
+{
+    if(!tcpSocket.isRunning())
+    {
+        m_socket.connectToHost("key.mayer-schoch.de",3344);
+
+        if(m_socket.waitForConnected(3000) && config.public_account == "yes")
+        {
+            qDebug() << "Connect door to public...";
+            tcpSocket.name = public_name;
+        }else
+        {
+            qDebug() << "Connect door to priavte...";
+            tcpSocket.name = private_name;
+        }
+        m_socket.close();
+        tcpSocket.start();
     }
 }
 
@@ -118,21 +147,23 @@ bool backend::unlock(QString passcode)
 {
     if(passcode == config.passcode)
     {
-        qDebug("unlocked");
-        m_socket.connectToHost("mayer-schoch.de",80);
-        if(m_socket.waitForConnected(3000))
-        {
-            m_socket.write("unlock");
-        }
-
+        door_unlock();
         return true;
     }else
     {
         return false;
     }
+
+}
+
+void backend::door_unlock()
+{
+    qDebug() << "door open -> unlock";
 }
 
 void backend::close_application()
 {
     QCoreApplication::quit();
 }
+
+

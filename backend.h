@@ -35,13 +35,22 @@ public:
 signals:
     void activeChanged();
 
-
 public slots:
-   void linPhone_finished();
+    void linPhone_finished();
     void stop_call();
+    void door_unlock();
 
 private:
    bool m_active = false;
+
+   const char* private_name = "dingdong:0000";
+   const char* public_name = "dingdong:0000";
+
+   const char* private_account = "sip:dingdong@dingdong:5061";
+   const char* private_password = "1234578";
+
+   void refreshDoorconnection();
+
    QTcpSocket m_socket;
 
 };

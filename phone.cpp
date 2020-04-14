@@ -2,6 +2,7 @@
 
 #include <linphone/linphonecore.h>
 #include <ortp/rtpsession.h>
+#include <ortp/telephonyevents.h>
 #include <iostream>
 #include <QtCore>
 #include <QDebug>
@@ -10,6 +11,7 @@ phone::phone()
 {
     std::cout << "Phone wurde erfolgreich Inizialisiert!" << std::endl;
 }
+
 
 void phone::run()
 {
@@ -20,7 +22,6 @@ void phone::run()
     vtable.call_state_changed = call_state_changed;
 
     lc = linphone_core_new(&vtable,NULL,NULL,NULL);
-
 
     cp = linphone_core_create_default_call_parameters(lc);
     linphone_call_params_enable_early_media_sending(cp,true);
@@ -44,16 +45,12 @@ void phone::run()
     std::cout << linphone_core_get_sip_port(lc) << std::endl;
 
 
-    //call = linphone_core_invite(lc,this->sip_addresse);
+    call = linphone_core_invite(lc,this->sip_addresse);
 
-    call = linphone_core_invite_with_params(lc,this->sip_addresse,cp);
+    //call = linphone_core_invite_with_params(lc,this->sip_addresse,cp);
 
     linphone_call_ref(call);
 
-    linphone_core_set_use_info_for_dtmf(lc,true);
-
-    qDebug() << linphone_core_get_use_rfc2833_for_dtmf(lc);
-    qDebug() << linphone_core_get_use_info_for_dtmf(lc);
     //qDebug() << "early media" << linphone_call_params_early_media_sending_enabled(cp);
 
     while(running){

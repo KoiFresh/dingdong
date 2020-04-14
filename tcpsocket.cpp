@@ -1,29 +1,43 @@
 #include "tcpsocket.h"
 
 #include <QThread>
+#include <QHostInfo>
 
-tcpsocket::tcpsocket(QObject *parent) : QObject(parent)
+tcpsocket::tcpsocket()
 {
-    connect(&socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
 
-    socket.connectToHost("192.168.2.115",9999);
+}
 
-    if(socket.waitForConnected(3000))
+void tcpsocket::run()
+{
+    socket = new QTcpSocket();
+
+    socket->connectToHost("dingdong",3344);
+
+    if(socket->waitForConnected(3000))
     {
-        qDebug() << "connected";
-        socket.write("Hallo");
-        socket.flush();
-        socket.waitForBytesWritten(3000);
-        //socket.waitForReadyRead();
-        //qDebug() << socket.readAll();
+
+        socket->write(name);
+        socket->flush();
+
+        qDebug() << "door sucessfully connected";
+        while (socket->state() == QAbstractSocket::ConnectedState) {
+
+            socket->waitForReadyRead();
+            QString cmd = socket->readAll();
+
+            if(cmd == "open")
+            {
+                qDebug("key_server send signal to open the door");
+                emit unlock();
+            }
+        }
+
+
     }else
     {
         qDebug() << "server not available";
     }
-}
-
-void tcpsocket::onReadyRead()
-{
-    qDebug() << "reading..";
-    //qDebug() << socket.readAll();
+    socket->close();
+    qDebug() << "tcp socket thread enden";
 }

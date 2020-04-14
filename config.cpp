@@ -78,6 +78,32 @@ void config::setOption(QStringList option)
             }
             passcode = passcode + option.value(i);
         }
+    }else
+    if(option.value(0) == "public_account")
+    {
+        public_account = "";
+
+        for(int i = 1;i < option.length(); i++)
+        {
+            if(i > 1)
+            {
+                public_account = public_account + ":";
+            }
+            public_account = public_account + option.value(i);
+        }
+    }else
+    if(option.value(0) == "public_door")
+    {
+        public_door = "";
+
+        for(int i = 1;i < option.length(); i++)
+        {
+            if(i > 1)
+            {
+                public_door = public_door + ":";
+            }
+            public_door = public_door + option.value(i);
+        }
     }
 }
 

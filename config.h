@@ -15,6 +15,8 @@ public:
     QString identity;
     QString password;
     QString passcode;
+    QString public_account;
+    QString public_door;
 
     QList<QString> height;
     QList<QString> name;

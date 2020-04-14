@@ -3,19 +3,23 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QThread>
 
-class tcpsocket : public QObject
+class tcpsocket : public QThread
 {
     Q_OBJECT
 public:
-    explicit tcpsocket(QObject *parent = nullptr);
+    tcpsocket();
+    void run();
+    const char* name = "dingdong:0000";
 
 public slots:
-    void onReadyRead();
+
 signals:
+    void unlock();
 
 private:
-    QTcpSocket socket;
+    QTcpSocket *socket;
 };
 
 #endif // TCPSOCKET_H
