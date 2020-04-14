@@ -6,8 +6,12 @@
 #include <QThread>
 #include <iostream>
 
+#include "tcpsocket.h"
+
 phone linPhone; //= new phone();
 config config;
+
+QThread mythread;
 
 backend::backend(QObject *parent) : QObject(parent)
 {  
@@ -16,6 +20,8 @@ backend::backend(QObject *parent) : QObject(parent)
 
     config.initializeUser();
     config.initializeSign();
+
+   // tcpsocket socket;
 
    // qDebug() << "name " << config.name.value(1);
    // qDebug() << "höhe " << config.height.value(1);
@@ -57,6 +63,7 @@ void backend::call_start(QString sip_addresse)
 {
     if(!m_active)
     {
+
         m_socket.connectToHost("sip.mayer-schoch.de",80);
 
         if(m_socket.waitForConnected(3000))
@@ -112,6 +119,12 @@ bool backend::unlock(QString passcode)
     if(passcode == config.passcode)
     {
         qDebug("unlocked");
+        m_socket.connectToHost("mayer-schoch.de",80);
+        if(m_socket.waitForConnected(3000))
+        {
+            m_socket.write("unlock");
+        }
+
         return true;
     }else
     {

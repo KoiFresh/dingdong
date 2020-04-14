@@ -20,7 +20,8 @@ SOURCES += \
         config.cpp \
         main.cpp \
         phone.cpp \
-        server.cpp
+        server.cpp \
+        tcpsocket.cpp
 
 RESOURCES += qml.qrc
 
@@ -39,7 +40,8 @@ HEADERS += \
     backend.h \
     config.h \
     phone.h \
-    server.h
+    server.h \
+    tcpsocket.h
 
 #unix:!macx: LIBS += -L$$PWD/../../../usr/lib/x86_64-linux-gnu/ -llinphone
 

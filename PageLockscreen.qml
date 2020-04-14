@@ -123,9 +123,15 @@ Item {
                 }
 
                 GradientStop {
+                    position: 0.5
+                    color: "#000000"
+                }
+
+                GradientStop {
                     position: 1
                     color: "#00000000"
                 }
+
             }
         }
 
@@ -140,6 +146,11 @@ Item {
             gradient: Gradient {
                 GradientStop {
                     position: 1
+                    color: "#000000"
+                }
+
+                GradientStop {
+                    position: 0.5
                     color: "#000000"
                 }
 
@@ -159,6 +170,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:10;anchors_width:600;anchors_x:0;anchors_y:0}D{i:14;anchors_height:300;anchors_width:600;anchors_x:0;anchors_y:0}
+    D{i:10;anchors_width:600;anchors_x:0;anchors_y:0}D{i:15;anchors_height:300;anchors_width:600;anchors_x:0;anchors_y:0}
 }
 ##^##*/

@@ -1,5 +1,7 @@
 #include "phone.h"
+
 #include <linphone/linphonecore.h>
+#include <ortp/rtpsession.h>
 #include <iostream>
 #include <QtCore>
 #include <QDebug>
@@ -19,6 +21,11 @@ void phone::run()
 
     lc = linphone_core_new(&vtable,NULL,NULL,NULL);
 
+
+    cp = linphone_core_create_default_call_parameters(lc);
+    linphone_call_params_enable_early_media_sending(cp,true);
+
+
     proxy_cfg = linphone_proxy_config_new();
     from = linphone_address_new(identity);
     info = linphone_auth_info_new(linphone_address_get_username(from),NULL,password,NULL,NULL);
@@ -36,13 +43,25 @@ void phone::run()
 
     std::cout << linphone_core_get_sip_port(lc) << std::endl;
 
-    call = linphone_core_invite(lc,this->sip_addresse);
+
+    //call = linphone_core_invite(lc,this->sip_addresse);
+
+    call = linphone_core_invite_with_params(lc,this->sip_addresse,cp);
 
     linphone_call_ref(call);
 
+    linphone_core_set_use_info_for_dtmf(lc,true);
+
+    qDebug() << linphone_core_get_use_rfc2833_for_dtmf(lc);
+    qDebug() << linphone_core_get_use_info_for_dtmf(lc);
+    //qDebug() << "early media" << linphone_call_params_early_media_sending_enabled(cp);
+
     while(running){
             linphone_core_iterate(lc);
+
             ms_usleep(50000);
+
+            //qDebug() << linphone_core_payload_type_enabled(lc,);
 
             if(linphone_call_get_state(call) == LinphoneCallError || linphone_call_get_state(call) == LinphoneCallEnd || linphone_call_get_state(call) == LinphoneCallIdle)
             {

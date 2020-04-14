@@ -26,6 +26,8 @@ private:
     LinphoneCore *lc;
     LinphoneCall *call=NULL;
 
+    LinphoneCallParams *cp;
+
     LinphoneProxyConfig* proxy_cfg;
     LinphoneAddress *from;
     LinphoneAuthInfo *info;
