@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=dingdong
+Exec=bash /home/user/Schreibtisch/dingdong/start.sh
+X-GNOME-Autostart-enabled=tru
