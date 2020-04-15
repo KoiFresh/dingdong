@@ -27,11 +27,5 @@ bash dingdong/install.sh
 !! eventuell geforderte informationen angeben.
 !! auf den neustart warten
 
-sudo docker container run --net=host --restart always --name key_server koifresh/key_server:1.0
-
-!! Kommt die meldung "Server started!" hat die  installation funktioniert und die klingel muss ein letztes mal neu gestarte !!werden
-
-sudo reboot
-
 Fertig ! Die Klingel kann nun verwendet werden
 
