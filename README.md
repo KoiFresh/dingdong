@@ -14,7 +14,9 @@ Diese Version ist die erste Testversion für die dingdong anwendung - 2020-04-11
 ###### Empfohlenes Betriebssystem : Ubuntu Mate mit 7 Zoll Display Hochkannt 600x1024 pixel
 
 sudo apt-get install git
+
 git clone https://github.com/KoiFresh/dingdong.git
+
 bash dingdong/install.sh
 
 ###### unter umständen kann die eingabe des Kontinents so wie die Zeitzone gefordert werdem
