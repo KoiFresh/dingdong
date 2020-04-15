@@ -1,6 +1,4 @@
 #!/bin/bash
 
-cd /home/user/Schreibtisch/dingdong
-qmake mate.pro
-make
+cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ./mate
