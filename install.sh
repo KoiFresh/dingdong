@@ -23,7 +23,7 @@ sudo systemctl enable docker
 
 sudo docker pull koifresh/key_server:1.0
 sudo docker rm key_server
-sudo docker container run --net=host --name key_server koifresh/key_server:1.0
+
 
 #config key_logger
 
