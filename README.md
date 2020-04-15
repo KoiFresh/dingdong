@@ -21,4 +21,16 @@ bash install.sh
 ssh user@dingdong
 password = username
 
+Richtiges Reihenfolge zum Installieren der anwendung
+
+sudo apt-get install git
+git clone https://github.com/KoiFresh/dingdong.git
+
+bash dingdong/install.sh
+
+!! eventuell geforderte informationen angeben.
+!! auf den neustart warten
+
 sudo docker container run --net=host --restart always --name key_server koifresh/key_server:1.0
+
+sudo reboot
