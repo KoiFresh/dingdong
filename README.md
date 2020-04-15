@@ -2,30 +2,37 @@
 
 Diese Version ist die erste Testversion für die dingdong anwendung - 2020-04-11
 
-# Reihenfolge der Dateine:
 
-# bash start.sh
--> startet das GUI bei korrektrer einrichtung durch update.sh 
--> kann alleine ausgeführt werden nach korreter einstelllung durch update.sh 
+# Richtiges Reihenfolge zum Installieren der Kompletten Anwendung
+### Enthalten sind:
+#####  - GUI Interface
+#####  - Telefon Server 
+#####  - key_server
+#####  - key_logger
 
-bash update.sh
--> stellt das Frontend der klingel bereit beu GUI update diese.
--> nimmt einstelllungen für start.sh for 
--> Die Klingel starte neu
-
-# bash install.sh 
--> Installiert alle benötigten anteile führt automatisch update.sh aus
-
-
-# Richtiges Reihenfolge zum Installieren der anwendung
+### Instalaltion der Anwendung
+###### Empfohlenes Betriebssystem : Ubuntu Mate mit 7 Zoll Display Hochkannt 600x1024 pixel
 
 sudo apt-get install git
 git clone https://github.com/KoiFresh/dingdong.git
-
 bash dingdong/install.sh
 
-!! eventuell geforderte informationen angeben.
-!! auf den neustart warten
+###### unter umständen kann die eingabe des Kontinents so wie die Zeitzone gefordert werdem
 
-Fertig ! Die Klingel kann nun verwendet werden
+### Fertig! Die Klingel kann nun Verwendet werden
+
+
+#### Beschreibung der .sh Dateien
+
+##### bash install.sh 
+- Installiert alle benötigten Abzhängigkeiten und führt am ende die Datei update.sh aus.
+
+##### bash update.sh
+- bereitet den Automatischen start des GUI vor 
+- startet die Klingel neu.
+
+##### bash start.sh
+- startet das GUI und Initialisiert die Kamera 
+
+
 
