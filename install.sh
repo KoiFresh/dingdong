@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 echo "User interaction is requierd in two times"
 echo "User interaction is requierd in two times"
 echo "User interaction is requierd in two times"
@@ -48,7 +50,6 @@ sudo apt-get install asterisk
 
 echo "User interaction sucessfully completed"
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR 
 
 
