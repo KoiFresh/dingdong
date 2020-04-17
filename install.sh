@@ -35,10 +35,10 @@ sudo rm mycron
 
 #config key_logger
 sudo rm -r /home/key_logger
-cd /home
-git clone https://github.com/KoiFresh/key_logger.git
-cd /home/key_logger
-bash start.sh
+sudo cd /home
+sudo git clone https://github.com/KoiFresh/key_logger.git
+sudo cd /home/key_logger
+sudo bash start.sh
 
 #config asterisk
 
