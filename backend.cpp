@@ -28,6 +28,7 @@ backend::backend(QObject *parent) : QObject(parent)
     qDebug() << "passcode: " << config.passcode;
     qDebug() << "public_account: " << config.public_account;
     qDebug() << "public_door: " << config.public_door;
+    qDebug() << "door_host: " << config.door_host;
 
     refreshDoorconnection();
 
@@ -159,6 +160,16 @@ bool backend::unlock(QString passcode)
 void backend::door_unlock()
 {
     qDebug() << "door open -> unlock";
+    m_socket.connectToHost(config.door_host,3345);
+    if(m_socket.waitForConnected(3000))
+    {
+        m_socket.write("doormaster:open");
+        qDebug("Open send to doormaster");
+    }else
+    {
+        qDebug("doormaster not available");
+    }
+    m_socket.close();
 }
 
 void backend::close_application()

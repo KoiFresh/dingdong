@@ -19,18 +19,11 @@ sudo apt install -y docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 
-#add crontab
-
-echo "@reboot sudo modprobe bcm2835-v4l2" >> mycron
-sudo crontab mycron
-rm mycron
-
 #download docker image and run
 
 sudo docker pull koifresh/key_server:1.0
 sudo docker rm key_server
-sudo docker container run --net=host -d --restart always --name key_server koifresh/key_server:1.0
-
+sudo docker container run --net=host --name key_server koifresh/key_server:1.0
 
 #config key_logger
 

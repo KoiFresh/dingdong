@@ -104,6 +104,19 @@ void config::setOption(QStringList option)
             }
             public_door = public_door + option.value(i);
         }
+    }else
+    if(option.value(0) == "door_host")
+    {
+        door_host = "";
+
+        for(int i = 1;i < option.length(); i++)
+        {
+            if(i > 1)
+            {
+                door_host = door_host + ":";
+            }
+            door_host = door_host + option.value(i);
+        }
     }
 }
 
