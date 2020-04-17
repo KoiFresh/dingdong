@@ -25,6 +25,12 @@ sudo docker pull koifresh/key_server:1.0
 sudo docker rm key_server
 sudo docker container run --net=host -d --name key_server koifresh/key_server:1.0
 
+# kamera initialisieren
+
+echo "@reboot sudo modprobe bcm2835-v4l2" >> mycron
+sudo crontab mycron
+sudo rm mycron
+
 #config key_logger
 
 mkdir /home/key_logger
