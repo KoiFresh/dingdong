@@ -8,12 +8,12 @@ Item {
     transformOrigin: Item.Center
 
     Component.onCompleted: {
-        objectPasscode1.index = Math.floor(Math.random() * 10) - 1
-        objectPasscode2.index = Math.floor(Math.random() * 10) - 1
-        objectPasscode3.index = Math.floor(Math.random() * 10) - 1
-        objectPasscode4.index = Math.floor(Math.random() * 10) - 1
-        objectPasscode5.index = Math.floor(Math.random() * 10) - 1
-        objectPasscode6.index = Math.floor(Math.random() * 10) - 1
+        objectPasscode1.index = Math.floor(Math.random() * 10)
+        objectPasscode2.index = Math.floor(Math.random() * 10)
+        objectPasscode3.index = Math.floor(Math.random() * 10)
+        objectPasscode4.index = Math.floor(Math.random() * 10)
+        objectPasscode5.index = Math.floor(Math.random() * 10) 
+        objectPasscode6.index = Math.floor(Math.random() * 10)
     }
 
     Rectangle {
@@ -96,12 +96,12 @@ Item {
                     }
                     mainSwipe.currentIndex = 0
 
-                    objectPasscode1.index = Math.floor(Math.random() * 10) - 1
-                    objectPasscode2.index = Math.floor(Math.random() * 10) - 1
-                    objectPasscode3.index = Math.floor(Math.random() * 10) - 1
-                    objectPasscode4.index = Math.floor(Math.random() * 10) - 1
-                    objectPasscode5.index = Math.floor(Math.random() * 10) - 1
-                    objectPasscode6.index = Math.floor(Math.random() * 10) - 1
+                    objectPasscode1.index = Math.floor(Math.random() * 10) 
+                    objectPasscode2.index = Math.floor(Math.random() * 10) 
+                    objectPasscode3.index = Math.floor(Math.random() * 10) 
+                    objectPasscode4.index = Math.floor(Math.random() * 10) 
+                    objectPasscode5.index = Math.floor(Math.random() * 10) 
+                    objectPasscode6.index = Math.floor(Math.random() * 10) 
 
                 }
             }
