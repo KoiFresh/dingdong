@@ -131,7 +131,7 @@ Window {
 
         anchors.fill: parent
         enabled: false
-        //cursorShape: Qt.BlankCursor // Curso Ausblenden
+        cursorShape: Qt.BlankCursor // Curso Ausblenden
 
 
         // Einstellungen für Vollbild
